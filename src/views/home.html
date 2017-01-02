@@ -1,0 +1,7 @@
+<div class="input-container">
+    <form novalidate class="simple-form">
+        <label>Me: <input type="text" ng-model="conversation.text" /></label><br />
+        <input type="submit" ng-click="sendMessage(conversation)" value="Send" />
+    </form>
+    <p>{{result}}</p>
+</div>
