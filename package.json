@@ -7,16 +7,14 @@
     "angular": "^1.6.1",
     "angular-route": "^1.6.1",
     "browserify": "^13.1.1",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "jquery": "^3.1.1",
-    "watson-developer-cloud": "^2.14.3"
-  },
-  "devDependencies": {
-    "angular": "^1.6.1",
+    "watson-developer-cloud": "^2.14.3",
     "body-parser": "^1.15.2",
-    "cors": "^2.8.1",
     "webpack": "^1.14.0"
   },
+  "devDependencies": {},
   "scripts": {
     "build": "npm install && browserify ./src/index.js -o ./src/bundle.js",
     "start": "npm run build && node app.js"
