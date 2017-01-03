@@ -20,9 +20,7 @@ api.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
-api.use(bodyParser.urlencoded({
-    extended: true
-}));
+api.use(bodyParser.urlencoded({ extended: true }));
 api.use(bodyParser.json());
 api.post('/api/send', function (req, res) {
     conversation.message({
