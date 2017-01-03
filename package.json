@@ -6,6 +6,7 @@
   "dependencies": {
     "angular": "^1.6.1",
     "angular-route": "^1.6.1",
+    "browserify": "^13.1.1",
     "express": "^4.14.0",
     "jquery": "^3.1.1",
     "watson-developer-cloud": "^2.14.3"
