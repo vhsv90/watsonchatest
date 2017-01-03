@@ -24,19 +24,16 @@ api.use(bodyParser.urlencoded({
     extended: true
 }));
 api.use(bodyParser.json());
-api.post('/send', function (req, res) {
+api.post('/api/send', function (req, res) {
     conversation.message({
         input: { text: req.body.text },
         workspace_id: config.api_credentials.workspace_id,
-        context: {
-            conversation_id: req.body.id
-        }
+        context: req.body.context || {}
     }, function (err, response) {
         if (err) {
             console.log('ERROR@api.conversation.message: ' + err);
             return res.send(err);
         } else {
-            console.log(response);
             return res.send(JSON.stringify(response, null, 2));
         }
     });

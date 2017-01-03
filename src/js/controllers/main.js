@@ -11,7 +11,7 @@
         $scope.sendMessage = function (conversation) {
             var promise = helper.Post(JSON.stringify(conversation));
             promise.then(function (result) {
-                $scope.conversation.id = result.data.context.conversation_id;
+                $scope.conversation.context = result.data.context;
                 $scope.conversation.result = result.data.output.text[0];
                 $scope.dialog.push(conversation);
             });

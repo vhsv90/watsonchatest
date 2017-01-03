@@ -34260,7 +34260,7 @@ require('./js/utils/promise.service.js')
         $scope.sendMessage = function (conversation) {
             var promise = helper.Post(JSON.stringify(conversation));
             promise.then(function (result) {
-                $scope.conversation.id = result.data.context.conversation_id;
+                $scope.conversation.context = result.data.context;
                 $scope.conversation.result = result.data.output.text[0];
                 $scope.dialog.push(conversation);
             });
@@ -34277,9 +34277,10 @@ require('./js/utils/promise.service.js')
     .factory('PromiseService', ['$http', '$q', '$location', PromiseService]);
 
   function PromiseService($http, $q, $location) {
+    var api_url = $location.protocol() + '://' + $location.host() + ':505/api/send';
+
     function HttpPost(parameters) {
       var deferred = $q.defer();
-      var api_url = $location.protocol() + '://' + $location.host() + ':505/send';
       var req = {
         method: 'POST',
         url: api_url,
