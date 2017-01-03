@@ -6,7 +6,7 @@
     .factory('PromiseService', ['$http', '$q', '$location', PromiseService]);
 
   function PromiseService($http, $q, $location) {
-    var api_url = $location.protocol() + '://' + $location.host() + ':505/api/send';
+    var api_url = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/api/send';
 
     function HttpPost(parameters) {
       var deferred = $q.defer();

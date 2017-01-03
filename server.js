@@ -1,16 +1,13 @@
 'use strict';
-var express = express || require('express'),
-    path = require('path');
+var path = require('path');
 
-require('./server-api');
-
-var app = express();
-var cacheTime = 86400000 * 7;
-app.use(express.static(path.join(__dirname, 'src'), {
-    etag: false,
-    maxage: cacheTime
-}));
-app.use(function (req, res) {
-    res.sendFile(path.join(__dirname, 'src', 'index.html'));
-});
-app.listen(process.env.PORT || 500);
+module.exports = function (app, express) {
+    var cacheTime = 86400000 * 7;
+    app.use(express.static(path.join(__dirname, 'src'), {
+        etag: false,
+        maxage: cacheTime
+    }));
+    app.get('/', function (req, res) {
+        res.sendFile(path.join(__dirname, 'src', 'index.html'));
+    });
+}

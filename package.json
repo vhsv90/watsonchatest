@@ -17,8 +17,8 @@
     "webpack": "^1.14.0"
   },
   "scripts": {
-    "build": "browserify ./src/index.js -o ./src/bundle.js",
-    "start": "npm run build && node server.js"
+    "build": "npm install && browserify ./src/index.js -o ./src/bundle.js",
+    "start": "npm run build && node app.js"
   },
   "author": "Danny Fallas",
   "license": "ISC"
