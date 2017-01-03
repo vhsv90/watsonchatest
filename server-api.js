@@ -41,4 +41,4 @@ api.post('/send', function (req, res) {
         }
     });
 });
-api.listen(505);
+api.listen(process.env.PORT || 505);

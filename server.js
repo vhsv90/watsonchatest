@@ -13,4 +13,4 @@ app.use(express.static(path.join(__dirname, 'src'), {
 app.use(function (req, res) {
     res.sendFile(path.join(__dirname, 'src', 'index.html'));
 });
-app.listen(500);
+app.listen(process.env.PORT || 500);

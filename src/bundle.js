@@ -34255,16 +34255,15 @@ require('./js/utils/promise.service.js')
 
     function MainController($scope, PromiseService) {
         var helper = PromiseService;
+        $scope.dialog = [];
 
         $scope.sendMessage = function (conversation) {
             var promise = helper.Post(JSON.stringify(conversation));
             promise.then(function (result) {
                 $scope.conversation.id = result.data.context.conversation_id;
-                console.log(result.data.context);
-                $scope.conversation.dialog_counter = result.data.context.system.dialog_turn_counter;
-                $scope.result = result.data.output.text[0];
+                $scope.conversation.result = result.data.output.text[0];
+                $scope.dialog.push(conversation);
             });
-            conversation = {};
         }
     }
 })();
@@ -34275,14 +34274,15 @@ require('./js/utils/promise.service.js')
 
   angular
     .module('watsonDemoApp')
-    .factory('PromiseService', ['$http', '$q', PromiseService]);
+    .factory('PromiseService', ['$http', '$q', '$location', PromiseService]);
 
-  function PromiseService($http, $q) {
+  function PromiseService($http, $q, $location) {
     function HttpPost(parameters) {
       var deferred = $q.defer();
+      var api_url = $location.protocol() + '://' + $location.host() + ':505/send';
       var req = {
         method: 'POST',
-        url: 'http://localhost:505/send',
+        url: api_url,
         headers: {
           'Access-Control-Allow-Origin': '*'
         },

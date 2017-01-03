@@ -3,14 +3,15 @@
 
   angular
     .module('watsonDemoApp')
-    .factory('PromiseService', ['$http', '$q', PromiseService]);
+    .factory('PromiseService', ['$http', '$q', '$location', PromiseService]);
 
-  function PromiseService($http, $q) {
+  function PromiseService($http, $q, $location) {
     function HttpPost(parameters) {
       var deferred = $q.defer();
+      var api_url = $location.protocol() + '://' + $location.host() + ':505/send';
       var req = {
         method: 'POST',
-        url: 'http://localhost:505/send',
+        url: api_url,
         headers: {
           'Access-Control-Allow-Origin': '*'
         },

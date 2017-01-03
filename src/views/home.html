@@ -3,5 +3,8 @@
         <label>Me: <input type="text" ng-model="conversation.text" /></label><br />
         <input type="submit" ng-click="sendMessage(conversation)" value="Send" />
     </form>
-    <p>{{result}}</p>
+    <div ng-repeat="model in dialog">
+        <p>Me: {{model.text}}</p>
+        <p>Watson: {{model.result}}</p>
+    </div>
 </div>
